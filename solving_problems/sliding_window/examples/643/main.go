@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // Maximum Average Subarray I (LeetCode 643) -
 //  Fácil Problema: Dado um array nums e um inteiro k, encontre o sub-array contíguo de tamanho k que possui a maior média.
 
@@ -29,6 +31,6 @@ func FoudHighAvg(arr []int, k int) float64 {
 func main() {
 	arr := []int{10, 20, 11, 15, 22, 13}
 
-	FoudHighAvg(arr, 3)
+	fmt.Println(FoudHighAvg(arr, 3))
 
 }
