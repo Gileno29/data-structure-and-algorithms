@@ -95,15 +95,27 @@ func (l *DoublyLinkedList) Display() {
 	}
 	fmt.Println("NIL")
 }
+
+func (l *DoublyLinkedList) Copy() *DoublyLinkedList {
+	newList := &DoublyLinkedList{}
+	current := l.Head
+	for current != nil {
+		newList.AddToEnd(current.Value)
+		current = current.Next
+	}
+	return newList
+}
+
 func main() {
 	list := &DoublyLinkedList{}
 	list.AddToFront(10)
 	list.AddToFront(20)
 	list.AddToEnd(30)
 	list.Display()
+	copyList := list.Copy()
 
 	var NewList *Node = nil
-	current := list.Head
+	current := copyList.Head
 
 	for current != nil {
 		nextNode := current.Next // Salva o próximo antes de alterar
@@ -122,4 +134,16 @@ func main() {
 		fmt.Printf("Valor: %d\n", temp.Value)
 		temp = temp.Next // ESSENCIAL: Avançar o ponteiro para evitar loop infinito
 	}
+
+	// get the midle of the linked list
+
+	ahead := list.Head
+	var head *Node = nil
+	for ahead != nil && ahead.Next != nil {
+		fmt.Println("im here")
+		ahead = ahead.Next.Next
+		head = list.Head.Next
+	}
+
+	fmt.Println(head.Value)
 }
