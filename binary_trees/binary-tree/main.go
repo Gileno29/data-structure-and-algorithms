@@ -9,20 +9,21 @@ func main() {
 
 	btree := tree.BinaryTree{Root: nil}
 
+	btree.Insert(5)
+	btree.Insert(3)
+	btree.Insert(1)
 	btree.Insert(10)
-	btree.Insert(20)
-	btree.Insert(30)
-	btree.Insert(40)
-	btree.Insert(550)
-	btree.Insert(320)
-	btree.Insert(1000)
-	btree.Insert(120)
-	btree.Insert(110)
-	btree.Insert(330)
-	btree.Insert(220)
-	btree.Insert(11110)
+	btree.Insert(15)
+	btree.Insert(7)
 
 	fmt.Println(btree.Search(2))
 
 	tree.Show(btree.Root)
+	fmt.Println()
+
+	fmt.Println("Pre order Traversal:", btree.PreorderTraversal())
+
+	fmt.Println("In order Traversal:", btree.InOrderTraversal())
+
+	fmt.Println("Post order Traversal:", btree.PostOrderTraversal())
 }

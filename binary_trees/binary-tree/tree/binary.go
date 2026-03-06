@@ -58,6 +58,58 @@ func (b *BinaryTree) SearchRecursive(node *Node, data int) bool {
 
 }
 
+func (b *BinaryTree) PreorderTraversal() []int {
+	var result []int
+
+	b.PreorderRecursive(b.Root, &result)
+
+	return result
+}
+
+func (b *BinaryTree) PreorderRecursive(node *Node, result *[]int) {
+
+	if node != nil {
+		*result = append(*result, node.Data)
+		b.PreorderRecursive(node.Left, result)
+		b.PreorderRecursive(node.Rigth, result)
+	}
+}
+
+func (b *BinaryTree) InOrderTraversal() []int {
+	var result []int
+
+	b.InOrderRecursive(b.Root, &result)
+
+	return result
+}
+
+func (b *BinaryTree) InOrderRecursive(node *Node, result *[]int) {
+
+	if node != nil {
+		b.InOrderRecursive(node.Left, result)
+		*result = append(*result, node.Data)
+		b.InOrderRecursive(node.Rigth, result)
+
+	}
+}
+
+func (b *BinaryTree) PostOrderTraversal() []int {
+	var result []int
+
+	b.PostOrderRecursive(b.Root, &result)
+
+	return result
+}
+
+func (b *BinaryTree) PostOrderRecursive(node *Node, result *[]int) {
+
+	if node != nil {
+		b.PostOrderRecursive(node.Left, result)
+		b.PostOrderRecursive(node.Rigth, result)
+		*result = append(*result, node.Data)
+
+	}
+}
 func Show(n *Node) {
 	if n == nil {
 		return
