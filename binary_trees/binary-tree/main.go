@@ -26,4 +26,7 @@ func main() {
 	fmt.Println("In order Traversal:", btree.InOrderTraversal())
 
 	fmt.Println("Post order Traversal:", btree.PostOrderTraversal())
+
+	fmt.Println(btree.DFSRecursive(btree.Root, 22))
+	fmt.Println(btree.BFS(20))
 }

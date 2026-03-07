@@ -1,6 +1,10 @@
 package tree
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/gammazero/deque"
+)
 
 type Node struct {
 	Data  int
@@ -58,6 +62,60 @@ func (b *BinaryTree) SearchRecursive(node *Node, data int) bool {
 
 }
 
+func (b *BinaryTree) DFS(data int) bool {
+
+	return b.DFSRecursive(b.Root, data)
+
+}
+
+func (b *BinaryTree) DFSRecursive(node *Node, data int) bool {
+
+	if node == nil {
+		return false
+	}
+	fmt.Println(node.Data)
+	if node.Data == data {
+		return true
+
+	}
+	if b.DFSRecursive(node.Left, data) {
+		return true
+	}
+	if b.DFSRecursive(node.Rigth, data) {
+		return true
+	}
+	return false
+}
+
+func (b *BinaryTree) BFS(target int) bool {
+	if b.Root == nil {
+		return false
+	}
+
+	var q deque.Deque[*Node]
+
+	q.PushFront(b.Root)
+
+	for q.Len() != 0 {
+
+		node := q.PopFront()
+		if node.Data == target {
+			return true
+		}
+		fmt.Println(node.Data)
+
+		if node.Left != nil {
+			q.PushFront(node.Left)
+		}
+
+		if node.Rigth != nil {
+			q.PushFront(node.Rigth)
+
+		}
+	}
+	return false
+
+}
 func (b *BinaryTree) PreorderTraversal() []int {
 	var result []int
 
